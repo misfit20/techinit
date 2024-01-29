@@ -6,38 +6,43 @@
   font-family: "Open Sans", sans-serif;
 
 }
-.container {
-  width: 1200px;
-  max-width: 90%;
-  margin: 0 auto;
-  padding: 50px 0;
+
+
+/* Example media query for smaller screens */
+@media (max-width: 768px) {
+  /* Styles for smaller screens */
 }
+
+/* Example media query for tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Styles for tablets */
+}
+
+/* Example media query for larger screens */
+@media (min-width: 1024px) {
+  /* Styles for larger screens */
+}
+
+.container {
+  width: 90%; /* Adjust as needed */
+  max-width: 1200px; /* Optional: Set a maximum width */
+  margin: 0 auto; /* Center the container */
+}
+
+.element {
+  width: 100%; /* Full width of parent */
+  padding: 2%; /* Responsive padding */
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+
 a{
   text-decoration: none;
-}
-nav {
-  display: flex;
-  justify-content: space-between;
-}
-nav a img{
-  width: 100px;
-}
-
-nav ul {
-  display: flex;
-}
-
-nav li {
-  list-style: none;
-  margin: 0 25px;
-}
-nav ul li a {
-  color: hsl(243, 87%, 12%);
-}
-nav ul li a:hover{
-  text-decoration: underline;
-}
-.hero {
+}.hero {
   display: flex;
   align-items: center;
   margin-bottom: 5rem;
@@ -86,14 +91,7 @@ nav ul li a:hover{
   max-width: 465px;
 }
 @media screen and (max-width: 1000px) {
-  nav img {
-    width: 100px; 
-  }
-
-  nav li {
-    list-style: none;
-    margin: 0 8px 
-  }
+  
 
   .hero {
     flex-direction: column;  
@@ -109,13 +107,186 @@ nav ul li a:hover{
 
 .business-list {
   list-style: none;
-  padding: 0;
+  padding-bottom: 30;
 }
 
 /* Style each business item */
 .business-item {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px; /* Add space between each business item */
+  /*border: 10px solid #800e0e;*/
+  padding-bottom: 50px;
+  /* margin-bottom: 50px; Add space between each business item */
   /* Add additional styling as needed */
 }
+
+
+
+/* Get rid of all default margins/paddings. Set typeface */
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:  'tahoma';
+
+
+}
+
+
+body {
+  justify-content:center;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+nav
+{
+  position: relative;
+  
+  height: 60px;
+  background: #222;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+nav a
+{
+  position: relative;
+  padding-right: 50px;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 0 23;
+  transition: background-color 1.3s ease-in-out;
+ 
+}
+
+nav a:hover {
+    background: #4f1919;
+    background: linear-gradient(45deg, #4f1919, #ff3333); /* New background color */
+    color: #fff;
+    opacity: 85%;
+    border-radius: 18px 3px;
+
+
+}
+
+/* Puts the form in the center both horizontally and vertically. Sets its height to 100% of the viewport's height */
+
+.signupFrm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: white;
+  width: 400px;
+  border-radius: 8px;
+  padding: 20px 40px;
+  box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+.inputContainer {
+  position: relative;
+  height: 45px;
+  width: 90%;
+  margin-bottom: 17px;
+}
+
+/* Style the inputs */
+
+.input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #DADCE0;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 0 20px;
+  outline: none;
+  background: none;
+  z-index: 1;
+}
+
+/* Hide the placeholder texts (a) */
+
+::placeholder {
+  color: transparent;
+}
+
+/* Styling text labels */
+
+.label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 0 4px;
+  background-color: white;
+  color: #DADCE0;
+  font-size: 16px;
+  transition: 0.5s;
+  z-index: 0;
+}
+
+.submitBtn {
+  display: block;
+  margin-left: auto;
+  padding: 15px 30px;
+  border: none;
+  background-color: purple;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.submitBtn:hover {
+  background-color: #9867C5;
+  transform: translateY(-2px);
+}
+
+.input:focus + .label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+  color: purple;
+}
+
+.input:focus {
+  border: 2px solid purple;
+}
+
+.input:not(:placeholder-shown)+ .label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.business-name
+{
+  color:#372cfa;
+}
+
+.form_text
+{
+  border-radius: 6px, 3px;
+}
+

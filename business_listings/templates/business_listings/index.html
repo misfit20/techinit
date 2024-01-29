@@ -1,55 +1,7 @@
-{% load static %}
 
-<!DOCTYPE html>
-    <html>
-        <head>
+          {% extends "business_listings/layout.html" %}
 
-            <title>Home Page</title>
-
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-            <link href ="{% static 'header/styles.css'%}" rel = "stylesheet" >
-            
-            
-
-
-        </head>
-        <body>
-        
-
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="#">TechFusion</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                
-                  <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav ms-auto ">
-                      <li class="nav-item">
-                        <a class="nav-link mx-2 active" aria-current="page" href="#">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link mx-2" href="#">Products</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link mx-2" href="#">Services</a>
-                      </li>
-
-                      <li class="nav-item">
-                        <a class="nav-link mx-2" href="#">Blog</a>
-                      </li>
-
-                      <li class="nav-item">
-                        <a class="nav-link mx-2" href="#">Log In</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                </nav>
-
+              {% block body %}
                 <div class="hero">
                   <section class="hero-left">
                     <h1>Explore, Connect, and Discover: Your Gateway to Local Businesses</h1>
@@ -57,23 +9,48 @@
                       Discover a dynamic fusion of technology and community at TechFusion. Explore innovative solutions and foster connections within our vibrant tech-centric ecosystem. Join us in shaping the future of connectivity.
                     </p>
             
-                    <a href="#">Get Started</a>
+                    <a href="{% url 'signup:signup' %}">Get Started</a>
                   </section>
             
-                  <section class="right">
-                    <img src="images/hero-illustration.svg" alt="Hero illustration" />
-                  </section>
+                  
                 </div>
 
                 <h1>Feed</h1>
                 <ul class="business-list">
-                  {%for business in businesses%}
-                  <li class="business-item">{{business.name}}:
-                     {{business.description}}</li>
-                  {% endfor %}
+               
+                    
+                  
+
+                  {% for business in businesses %}
+    <div class="profile">
+        <div class="business-name">
+            <h2 class = "business-item">{{ business.business }}</h2>
+        </div>
+        <div class="business-description">
+            <p>{{ business.description }}</p>
+        </div>
+        <br><br>
+        {% if bu %}
+        <h3>Reviews:</h3>
+        <ul>
+            {% for review in business_reviews.business %}
+                <li>{{ review.subject }} - Rating: {{ review.rating }}</li>
+                <!-- Display other review details as needed -->
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No reviews available for this business.</p>
+    {% endif %}
+
+
+
+        
+        <div class="business-actions">
+            <a href="{% url 'business_listings:busp' business.id %}" class="btn btn-primary">Profile</a>
+        </div>
+    </div>
+    <br><br><br>
+{% endfor %}
                 </ul>
-
-                
-
-        </body>
-    </html>
+              {% endblock %}
+              
